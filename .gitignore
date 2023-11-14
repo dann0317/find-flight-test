@@ -20,9 +20,17 @@ gradle-app.setting
 # JDT-specific (Eclipse Java Development Tools)
 .classpath
 
+# Ignore IDE-generated files
+.idea/
+*.iml
+*.bat
+
+# Ignore compiled files and output folders.
 target/
 history/
 
-
-
+# Ignore log files and compilation folders.
+log/
+logs/
+build/
 
