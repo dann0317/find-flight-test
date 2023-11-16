@@ -16,7 +16,7 @@ public class DataFligth {
     public static final String DEFAULTRETURNDAY = "30";
     public static final String DEFAULTRETURNMONTH = "diciembre";
 
-    public DataFligth(){
+    public DataFligth() {
         this.flightFrom = DEFAULTFLIGHTFROM;
         this.flightTo = DEFAULTFLIGHTTO;
         this.departDay = DEFAULTDEPARTDAY;
@@ -27,7 +27,7 @@ public class DataFligth {
 
 
     public DataFligth(String flightFrom, String flightTo, String departDay,
-                      String returnDay, String departMonth, String returnMonth){
+                      String returnDay, String departMonth, String returnMonth) {
         this.flightFrom = flightFrom;
         this.flightTo = flightTo;
         this.departDay = departDay;
@@ -36,33 +36,6 @@ public class DataFligth {
         this.returnMonth = returnMonth;
     }
 
-    /*public void setFlightDates (){
-
-        LocalDate actualDate = LocalDate.now();
-        // Toma la fecha y aumenta 3 meses
-        departDay = String.valueOf(actualDate.getDayOfMonth());
-        departMonth = actualDate.getMonthValue()+3;
-
-        if ((actualDate.getDayOfMonth() == 31)) {
-            returnDay = "1";
-        } else {
-            returnDay = String.valueOf(actualDate.getDayOfMonth() + 1);
-        }
-        if (departMonth >= 12) {
-            departMonth = (departMonth - 12);
-            returnMonth = departMonth + 1;
-
-        } else {
-            returnMonth = actualDate.getMonthValue() + 1;
-        }
-        Month theDepartMonth = Month.of(departMonth);
-        Month theReturnMonth = Month.of(returnMonth);
-
-        String nameDepartMonth = theDepartMonth.getDisplayName(java.time.format.TextStyle.FULL, java.util.Locale.getDefault());
-        String nameReturnMonth = theReturnMonth.getDisplayName(java.time.format.TextStyle.FULL, java.util.Locale.getDefault());
-
-        System.out.println("Fecha actual:..."+departDay+" "+nameDepartMonth+" "+returnDay+" "+nameReturnMonth);
-    }*/
 
     public String getDepartDay() {
         return departDay;

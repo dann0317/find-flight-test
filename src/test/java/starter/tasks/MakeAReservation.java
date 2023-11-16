@@ -21,7 +21,6 @@ public class MakeAReservation {
         DataFligth newflight = new DataFligth();
 
         return Task.where(
-                //WaitUntil.the(LOGIN_POPUP, WebElementStateMatchers.isPresent()),
                 Check.whether(LOGIN_POPUP.isVisibleFor(theActorInTheSpotlight()))
                         .andIfSo(Click.on(LOGIN_POPUP)),
                 Click.on(FLIGHTS_OPTION),
