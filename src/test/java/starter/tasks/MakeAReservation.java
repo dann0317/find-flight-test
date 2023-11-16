@@ -4,12 +4,14 @@ import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
-import net.serenitybdd.screenplay.matchers.WebElementStateMatchers;
+import net.serenitybdd.screenplay.conditions.Check;
 import net.serenitybdd.screenplay.waits.WaitUntil;
 import starter.helpers.AsksForA;
 import starter.helpers.DataFligth;
-import starter.tasks.SetCalendar;
 
+import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
+import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isClickable;
+import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isPresent;
 import static starter.userinterfaces.BookingForm.*;
 
 public class MakeAReservation {
@@ -19,13 +21,14 @@ public class MakeAReservation {
         DataFligth newflight = new DataFligth();
 
         return Task.where(
-                WaitUntil.the(LOGIN_POPUP, WebElementStateMatchers.isClickable()),
-                Click.on(LOGIN_POPUP),
+                //WaitUntil.the(LOGIN_POPUP, WebElementStateMatchers.isPresent()),
+                Check.whether(LOGIN_POPUP.isVisibleFor(theActorInTheSpotlight()))
+                        .andIfSo(Click.on(LOGIN_POPUP)),
                 Click.on(FLIGHTS_OPTION),
-                WaitUntil.the(ONE_WAY_OPTION, WebElementStateMatchers.isClickable()),
+                WaitUntil.the(ONE_WAY_OPTION, isClickable()),
                 Click.on(ONE_WAY_OPTION),
                 Click.on(WHERE_FROM_FIELD),
-                WaitUntil.the(AIRPORT, WebElementStateMatchers.isPresent()),
+                WaitUntil.the(AIRPORT, isPresent()),
                 Click.on(CITYMDE_PRECHECK),
                 Enter.theValue(newflight.getFlightFrom()).into(AIRPORT),
                 Click.on(CITYMDE_CHECK),
@@ -36,7 +39,6 @@ public class MakeAReservation {
                 SetCalendar.with(newflight.getDepartMonth()),
                 Click.on(SEARCHBUTTON),
                 AsksForA.moment()
-                //WaitForA.moment(), Check.whether(lo que estoy preguntando).andIfSo(lo que haga si sí).otherwise(lo que quiero que haga si no)
         );
     }
 }
